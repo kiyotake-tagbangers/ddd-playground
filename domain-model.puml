@@ -1,0 +1,40 @@
+@startuml
+
+package Customer <<Cloud>> {
+    class Customer << (A,#f6d53d) AggregateRoot >> {
+        customerNo: String
+        name: String
+    }
+}
+package Product <<Cloud>> {
+    class Product << (A,#f6d53d) AggregateRoot >> {
+        productNo: String
+        name: String
+        price: MonetaryAmount
+    }
+}
+package Order <<Cloud>> {
+    class Order << (A,#f6d53d) AggregateRoot >> {
+        orderNo: String
+        orderDate: LocalDate
+    }
+    class OrderLine << (E,#f6d53d) Entity >>  {
+        name: String
+        price: MonetaryAmount
+        quantity: int
+    }
+    Order --> Customer
+    Order *-- OrderLine
+    OrderLine --> Product
+}
+
+'Admin "1" -u-> "n" Vote : association
+'Admin "1" -u-> "n" Decision : association
+'Admin "1" -u-> "n" Comment : association
+'
+'Application "1" *-- "n" Vote : aggregation
+'Application "1" *-- "1" Decision : aggregation
+'Application "1" --> "n" Comment : association
+'Application "1" --> "n" Attachment : association
+
+@enduml

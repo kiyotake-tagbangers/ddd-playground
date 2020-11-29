@@ -1,0 +1,5 @@
+spring:
+  jpa:
+    properties:
+      hibernate.globally_quoted_identifiers: true
+      hibernate.metadata_builder_contributor: playground.core.internal.UUIDMetadataBuilderContributor
