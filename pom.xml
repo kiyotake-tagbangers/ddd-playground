@@ -50,6 +50,16 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-events</artifactId>
+            <version>${jmolecules.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-onion-architecture</artifactId>
+            <version>${jmolecules.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.javamoney.moneta</groupId>
             <artifactId>moneta-core</artifactId>
             <version>${javamoney.version}</version>

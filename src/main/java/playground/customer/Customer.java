@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * @author KIYOTA, Takeshi
  */
-@Entity
+@Entity // JPAではEntityという表現しかない（AggregateもEntityも、@Entity)
 public class Customer implements AggregateRoot<Customer, Customer.CustomerId> {
 
     @EmbeddedId
