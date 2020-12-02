@@ -2,6 +2,7 @@ package playground.order;
 
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Identifier;
+import org.springframework.data.domain.AbstractAggregateRoot;
 import playground.customer.Customer;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ import java.util.UUID;
  * @author KIYOTA, Takeshi
  */
 @Entity
-public class Order implements AggregateRoot<Order, Order.OrderId> {
+public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot<Order, Order.OrderId> {
 
     @EmbeddedId
     private OrderId id;
@@ -65,6 +66,7 @@ public class Order implements AggregateRoot<Order, Order.OrderId> {
     @PrePersist
     private void init(){
         this.id = OrderId.create();
+        registerEvent(new OrderCreated(this));
     }
 
     @Embeddable

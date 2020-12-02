@@ -1,0 +1,10 @@
+@startuml
+
+package Document <<Cloud>> {
+	class OrderCreated << (E,#ffaa60) DomainEvent >> {
+	    order: Order
+	}
+}
+
+
+@enduml

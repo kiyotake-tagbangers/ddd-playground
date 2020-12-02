@@ -17,6 +17,8 @@ package Order <<Cloud>> {
     class Order << (A,#f6d53d) AggregateRoot >> {
         orderNo: String
         orderDate: LocalDate
+        customer: Customer
+        lines: List<OrderLine>
     }
     class OrderLine << (E,#f6d53d) Entity >>  {
         name: String

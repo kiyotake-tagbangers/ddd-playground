@@ -1,0 +1,14 @@
+@startuml
+
+package Order <<Cloud>> {
+	class CreateOrder
+}
+
+class CreateOrder << (C,#acd0f6) Command >> {
+	orderNo: String
+	orderDate: LocalDate
+	lines: List<OrderLine>
+	customer: CustomerId
+}
+
+@enduml
