@@ -1,4 +1,158 @@
 {
   "orderNo" : "O-12345",
-  "orderDate" : "2020-11-28"
+  "orderDate" : "2020-11-28",
+  "lines": [{
+    "name": "チョコモナカジャンボ",
+    "quantity": 1,
+    "money": {
+      "currency" : {
+        "context" : {
+          "empty" : false,
+          "providerName" : "java.util.Currency"
+        },
+        "currencyCode" : "JPY",
+        "numericCode" : 392,
+        "defaultFractionDigits" : 0
+      },
+      "number" : 140,
+      "positive" : true,
+      "negative" : false,
+      "negativeOrZero" : false,
+      "positiveOrZero" : true,
+      "factory" : {
+        "defaultMonetaryContext" : {
+          "maxScale" : 63,
+          "fixedScale" : false,
+          "amountType" : "org.javamoney.moneta.Money",
+          "precision" : 0,
+          "empty" : false,
+          "providerName" : null
+        },
+        "amountType" : "org.javamoney.moneta.Money",
+        "maxNumber" : null,
+        "minNumber" : null,
+        "maximalMonetaryContext" : {
+          "maxScale" : -1,
+          "fixedScale" : false,
+          "amountType" : "org.javamoney.moneta.Money",
+          "precision" : 0,
+          "empty" : false,
+          "providerName" : null
+        }
+      },
+      "context" : {
+        "maxScale" : 63,
+        "fixedScale" : false,
+        "amountType" : "org.javamoney.moneta.Money",
+        "precision" : 0,
+        "empty" : false,
+        "providerName" : null
+      },
+      "numberStripped" : 1.4E+2,
+      "zero" : false
+    }
+  },
+    {
+      "name": "バニラモナカジャンボ",
+      "quantity": 1,
+      "money": {
+        "currency" : {
+          "context" : {
+            "empty" : false,
+            "providerName" : "java.util.Currency"
+          },
+          "currencyCode" : "JPY",
+          "numericCode" : 392,
+          "defaultFractionDigits" : 0
+        },
+        "number" : 140,
+        "positive" : true,
+        "negative" : false,
+        "negativeOrZero" : false,
+        "positiveOrZero" : true,
+        "factory" : {
+          "defaultMonetaryContext" : {
+            "maxScale" : 63,
+            "fixedScale" : false,
+            "amountType" : "org.javamoney.moneta.Money",
+            "precision" : 0,
+            "empty" : false,
+            "providerName" : null
+          },
+          "amountType" : "org.javamoney.moneta.Money",
+          "maxNumber" : null,
+          "minNumber" : null,
+          "maximalMonetaryContext" : {
+            "maxScale" : -1,
+            "fixedScale" : false,
+            "amountType" : "org.javamoney.moneta.Money",
+            "precision" : 0,
+            "empty" : false,
+            "providerName" : null
+          }
+        },
+        "context" : {
+          "maxScale" : 63,
+          "fixedScale" : false,
+          "amountType" : "org.javamoney.moneta.Money",
+          "precision" : 0,
+          "empty" : false,
+          "providerName" : null
+        },
+        "numberStripped" : 1.4E+2,
+        "zero" : false
+      }
+    },
+    {
+      "name": "小豆バー",
+      "quantity": 3,
+      "money": {
+        "currency" : {
+          "context" : {
+            "empty" : false,
+            "providerName" : "java.util.Currency"
+          },
+          "currencyCode" : "JPY",
+          "numericCode" : 392,
+          "defaultFractionDigits" : 0
+        },
+        "number" : 100,
+        "positive" : true,
+        "negative" : false,
+        "negativeOrZero" : false,
+        "positiveOrZero" : true,
+        "factory" : {
+          "defaultMonetaryContext" : {
+            "maxScale" : 63,
+            "fixedScale" : false,
+            "amountType" : "org.javamoney.moneta.Money",
+            "precision" : 0,
+            "empty" : false,
+            "providerName" : null
+          },
+          "amountType" : "org.javamoney.moneta.Money",
+          "maxNumber" : null,
+          "minNumber" : null,
+          "maximalMonetaryContext" : {
+            "maxScale" : -1,
+            "fixedScale" : false,
+            "amountType" : "org.javamoney.moneta.Money",
+            "precision" : 0,
+            "empty" : false,
+            "providerName" : null
+          }
+        },
+        "context" : {
+          "maxScale" : 63,
+          "fixedScale" : false,
+          "amountType" : "org.javamoney.moneta.Money",
+          "precision" : 0,
+          "empty" : false,
+          "providerName" : null
+        },
+        "numberStripped" : 1.4E+2,
+        "zero" : false
+      }
+    }
+  ]
 }

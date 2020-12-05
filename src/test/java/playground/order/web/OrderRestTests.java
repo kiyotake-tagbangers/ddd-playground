@@ -28,7 +28,6 @@ public class OrderRestTests {
 
     final MockMvc mvc;
 
-
     @Test
     void list() throws Exception {
         this.mvc.perform(get("/orders"))
@@ -44,6 +43,5 @@ public class OrderRestTests {
                 .content(Files.contentOf(content, "UTF-8")))
                 .andExpect(status().isCreated())
                 .andDo(print());
-
     }
 }
