@@ -22,7 +22,7 @@ class CustomersTests {
 
     @Test
     void findById() {
-        var customer = this.customers.findById(new Customer.CustomerId(UUID.fromString("8d9b6d9b-240d-4724-a36d-2036599951ca")));
+        var customer = this.customers.findById(new Customer.CustomerId(UUID.fromString("2fdb63e4-ee55-4740-9401-c6bff79cec45")));
         assertThat(customer).isPresent();
     }
 }
