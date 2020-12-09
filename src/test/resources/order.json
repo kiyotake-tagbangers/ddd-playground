@@ -1,11 +1,18 @@
 {
   "orderNo" : "O-12345",
   "orderDate" : "2020-11-28",
+  "customer" : {
+    "id" : {
+      "customerId" : "2fdb63e4-ee55-4740-9401-c6bff79cec45"
+    }
+  },
   "lines": [{
-    "name": "チョコモナカジャンボ",
-    "product": {
-      "id": "2b305c7b-5809-4103-ba56-e7aa313aa88b"
+    "product" : {
+      "id" : {
+        "productId": "c1dbdb67-a51d-4923-8728-a6066fd83c7c"
+      }
     },
+    "name": "チョコモナカジャンボ",
     "quantity": 1,
     "money": {
       "currency" : {
@@ -56,6 +63,11 @@
     }
   },
     {
+      "product" : {
+        "id" : {
+          "productId": "c1dbdb67-a51d-4923-8728-a6066fd83c7a"
+        }
+      },
       "name": "バニラモナカジャンボ",
       "quantity": 1,
       "money": {
@@ -107,6 +119,11 @@
       }
     },
     {
+      "product" : {
+        "id" : {
+          "productId": "c1dbdb67-a51d-4923-8728-a6066fd03c7c"
+        }
+      },
       "name": "小豆バー",
       "quantity": 3,
       "money": {
