@@ -38,7 +38,7 @@ class OrderTests {
         var order = this.em.persistAndFlush(new Order
                 ("O-12345",
                         LocalDate.of(2020, 11, 28),
-                        customer,
+                        new Customer.CustomerAssociation(customer),
                         new OrderLine(new Product.ProductAssociation(product1),"チョコモナカジャンボ", Money.of(140,"JPY"),1),
                         new OrderLine(new Product.ProductAssociation(product2),"バニラモナカジャンボ", Money.of(140,"JPY"),1)
                         ));
@@ -47,7 +47,7 @@ class OrderTests {
         assertThat(order.getId()).isNotNull();
         assertThat(order.getOrderNo()).isEqualTo("O-12345");
         assertThat(order.getOrderDate()).isEqualTo(LocalDate.of(2020, 11, 28));
-        assertThat(order.getCustomer().getName()).isEqualTo("空条承太郎");
+        assertThat(order.getCustomer().getId()).isEqualTo(customer.getId());
         assertThat(order.getLines()).hasSize(2);
     }
 }

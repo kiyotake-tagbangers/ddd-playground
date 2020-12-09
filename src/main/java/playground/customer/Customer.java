@@ -1,6 +1,7 @@
 package playground.customer;
 
 import org.jmolecules.ddd.types.AggregateRoot;
+import org.jmolecules.ddd.types.Association;
 import org.jmolecules.ddd.types.Identifier;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.UUID;
 public class Customer implements AggregateRoot<Customer, Customer.CustomerId> {
 
     @EmbeddedId
+    @AttributeOverride(name = "customerId", column = @Column(name = "id"))
     private CustomerId id;
 
     private String name;
@@ -42,22 +44,40 @@ public class Customer implements AggregateRoot<Customer, Customer.CustomerId> {
     @Embeddable
     public static class CustomerId implements Identifier, Serializable {
 
-        private final UUID id;
+        private final UUID customerId;
 
         public CustomerId(UUID id) {
-            this.id = id;
+            this.customerId = id;
         }
 
         protected CustomerId(){
-            this.id = null;
+            this.customerId = null;
         }
 
-        public UUID getId() {
-            return this.id;
+        public UUID getCustomerId() {
+            return this.customerId;
         }
 
         public static CustomerId create(){
             return new CustomerId(UUID.randomUUID());
+        }
+    }
+
+    @Embeddable
+    public static class CustomerAssociation implements Association<Customer, CustomerId> {
+
+        private CustomerId id;
+
+        protected CustomerAssociation() {
+        }
+
+        public CustomerAssociation(Customer customer) {
+            this.id = customer.getId();
+        }
+
+        @Override
+        public CustomerId getId() {
+            return this.id;
         }
     }
 }

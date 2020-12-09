@@ -19,20 +19,23 @@ import java.util.UUID;
 public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot<Order, Order.OrderId> {
 
     @EmbeddedId
+    @AttributeOverride(name = "orderId", column = @Column(name = "id"))
     private OrderId id;
 
     private final String orderNo;
     private final LocalDate orderDate;
 
     // デフォルトだと EAGER が適用され、集約をまたいで永続化してしまう
-    @ManyToOne(fetch = FetchType.LAZY)
-    private final Customer customer;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private final Customer customer;
+
+    private final Customer.CustomerAssociation customer;
 
     // デフォルトだと LAZY が適用、同じ集約なのでライフサイクルを同じように管理できるようにする
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderLine> lines;
 
-    public Order(String orderNo, LocalDate orderDate, Customer customer, OrderLine... lines) {
+    public Order(String orderNo, LocalDate orderDate, Customer.CustomerAssociation customer, OrderLine... lines) {
         this.orderNo = orderNo;
         this.orderDate = orderDate;
         this.customer = customer;
@@ -57,7 +60,7 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
         return this.orderDate;
     }
 
-    public Customer getCustomer() {
+    public Customer.CustomerAssociation getCustomer() {
         return this.customer;
     }
 
@@ -77,18 +80,18 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
     @Embeddable
     public static class OrderId implements Identifier, Serializable {
 
-        private final UUID id;
+        private final UUID orderId;
 
         public OrderId(UUID id) {
-            this.id = id;
+            this.orderId = id;
         }
 
         protected OrderId(){
-            this.id = null;
+            this.orderId = null;
         }
 
-        public UUID getId() {
-            return id;
+        public UUID getOrderId() {
+            return orderId;
         }
 
         public static OrderId create(){
@@ -104,7 +107,7 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
                 return false;
             }
             OrderId orderId = (OrderId) other;
-            return orderId.getId().equals(this.id);
+            return orderId.getOrderId().equals(this.orderId);
         }
     }
 
