@@ -1,6 +1,5 @@
 package playground.order;
 
-import org.hibernate.annotations.Type;
 import org.javamoney.moneta.Money;
 import org.jmolecules.ddd.types.Identifier;
 import playground.product.Product;
@@ -16,6 +15,7 @@ import java.util.UUID;
 public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLine.OrderLineId>{
 
     @EmbeddedId
+    @AttributeOverride(name = "orderLineId", column = @Column(name = "id"))
     private OrderLineId id;
 
 //    @Type(type="uuid-char")
@@ -65,14 +65,14 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
 
     @Embeddable
     public static class OrderLineId implements Identifier, Serializable {
-        private final UUID id;
+        private final UUID orderLineId;
 
         public OrderLineId(UUID id) {
-            this.id = id;
+            this.orderLineId = id;
         }
 
         protected OrderLineId(){
-            this.id = null;
+            this.orderLineId = null;
         }
 
         public static OrderLineId create(){

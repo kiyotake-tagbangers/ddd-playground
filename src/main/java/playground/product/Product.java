@@ -1,10 +1,8 @@
 package playground.product;
 
-import org.hibernate.annotations.Type;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Association;
 import org.jmolecules.ddd.types.Identifier;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +15,7 @@ import java.util.UUID;
 public class Product implements AggregateRoot<Product, Product.ProductId> {
 
     @EmbeddedId
+    @AttributeOverride(name = "productId", column = @Column(name = "id"))
     private ProductId id;
 
     private final String productNo;
@@ -59,14 +58,14 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
     @Embeddable
     public static class ProductId implements Identifier, Serializable {
 
-        private final UUID id;
+        private final UUID productId;
 
         public ProductId(UUID id) {
-            this.id = id;
+            this.productId = id;
         }
 
         protected ProductId(){
-            this.id = null;
+            this.productId = null;
         }
 
         public static ProductId create(){
@@ -74,9 +73,13 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
         }
     }
 
-    public static class ProductAssociation implements Association<Product, Product.ProductId> {
+    @Embeddable
+    public static class ProductAssociation implements Association<Product, ProductId> {
 
         private ProductId id;
+
+        protected ProductAssociation() {
+        }
 
         public ProductAssociation(Product product) {
             this.id = product.getId();
