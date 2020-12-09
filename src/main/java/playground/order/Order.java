@@ -22,7 +22,8 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
     @AttributeOverride(name = "orderId", column = @Column(name = "id"))
     private OrderId id;
 
-    private final String orderNo;
+    private final OrderNumber orderNo;
+
     private final LocalDate orderDate;
 
     // デフォルトだと EAGER が適用され、集約をまたいで永続化してしまう
@@ -35,11 +36,18 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderLine> lines;
 
-    public Order(String orderNo, LocalDate orderDate, Customer.CustomerAssociation customer, OrderLine... lines) {
+    public Order(Customer.CustomerAssociation customer, OrderNumber orderNo, LocalDate orderDate, OrderLine... lines) {
         this.orderNo = orderNo;
         this.orderDate = orderDate;
         this.customer = customer;
         this.lines = Arrays.asList(lines);
+    }
+
+    public Order(Customer.CustomerAssociation customer, OrderNumber orderNo, LocalDate orderDate, List<OrderLine> lines) {
+        this.orderNo = orderNo;
+        this.orderDate = orderDate;
+        this.customer = customer;
+        this.lines = lines;
     }
 
     protected Order(){
@@ -52,7 +60,7 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
         return this.id;
     }
 
-    public String getOrderNo() {
+    public OrderNumber getOrderNo() {
         return this.orderNo;
     }
 

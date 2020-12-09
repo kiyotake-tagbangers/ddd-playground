@@ -63,6 +63,14 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
         return this.quantity;
     }
 
+    public Product.ProductAssociation getProduct() {
+        return product;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Embeddable
     public static class OrderLineId implements Identifier, Serializable {
         private final UUID orderLineId;
