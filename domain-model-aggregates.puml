@@ -15,12 +15,13 @@ package Product <<Cloud>> {
 }
 package Order <<Cloud>> {
     class Order << (A,#f6d53d) AggregateRoot >> {
+        customer: Customer.CustomerAssociation
         orderNo: String
         orderDate: LocalDate
-        customer: Customer
         lines: List<OrderLine>
     }
     class OrderLine << (E,#f6d53d) Entity >>  {
+        product: Product.ProductAssociation
         name: String
         price: MonetaryAmount
         quantity: int
