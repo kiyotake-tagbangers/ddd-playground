@@ -48,6 +48,6 @@ class OrderTests {
         assertThat(order.getOrderNo()).isEqualTo("O-12345");
         assertThat(order.getOrderDate()).isEqualTo(LocalDate.of(2020, 11, 28));
         assertThat(order.getCustomer().getName()).isEqualTo("空条承太郎");
-        assertThat(order.getLines()).hasSize(3);
+        assertThat(order.getLines()).hasSize(2);
     }
 }
