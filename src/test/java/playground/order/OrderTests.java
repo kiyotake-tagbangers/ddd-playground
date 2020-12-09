@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author KIYOTA, Takeshi
@@ -45,7 +44,7 @@ class OrderTests {
         assertThat(order).isInstanceOf(AggregateRoot.class);
         assertThat(order.getLines().get(0)).isInstanceOf(Entity.class);
         assertThat(order.getId()).isNotNull();
-        assertThat(order.getOrderNo()).isEqualTo("O-12345");
+        assertThat(order.getOrderNo().getOrderNumber()).isEqualTo("O-12345");
         assertThat(order.getOrderDate()).isEqualTo(LocalDate.of(2020, 11, 28));
         assertThat(order.getCustomer().getId()).isEqualTo(customer.getId());
         assertThat(order.getLines()).hasSize(2);

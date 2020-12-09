@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import playground.order.CreateOrder;
 import playground.order.OrderService;
 
@@ -22,8 +21,7 @@ import java.util.Optional;
 /**
  * @author KOGA, Yu
  */
-@RepositoryRestController
-@RequestMapping("/orders")
+@BasePathAwareController
 @RequiredArgsConstructor
 public class OrderController {
 
@@ -35,7 +33,7 @@ public class OrderController {
 
     private final RepositoryRestConfiguration restConfiguration;
 
-    @PostMapping
+    @PostMapping("orders")
     public ResponseEntity<RepresentationModel<?>> create(
             @RequestBody CreateOrder command,
             @RequestHeader(value = "Accept", required = false) String acceptHeader,

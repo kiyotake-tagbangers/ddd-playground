@@ -22,6 +22,8 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
     @AttributeOverride(name = "orderId", column = @Column(name = "id"))
     private OrderId id;
 
+    @Embedded
+    @AttributeOverride(name = "orderNumber", column = @Column(name = "order_no"))
     private final OrderNumber orderNo;
 
     private final LocalDate orderDate;

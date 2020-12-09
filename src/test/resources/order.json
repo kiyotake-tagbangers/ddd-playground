@@ -3,6 +3,9 @@
   "orderDate" : "2020-11-28",
   "lines": [{
     "name": "チョコモナカジャンボ",
+    "product": {
+      "id": "2b305c7b-5809-4103-ba56-e7aa313aa88b"
+    },
     "quantity": 1,
     "money": {
       "currency" : {
