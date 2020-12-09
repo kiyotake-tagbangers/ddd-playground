@@ -24,10 +24,12 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
     private final String orderNo;
     private final LocalDate orderDate;
 
-    @ManyToOne
+    // デフォルトだと EAGER が適用され、集約をまたいで永続化してしまう
+    @ManyToOne(fetch = FetchType.LAZY)
     private final Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    // デフォルトだと LAZY が適用、同じ集約なのでライフサイクルを同じように管理できるようにする
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderLine> lines;
 
     public Order(String orderNo, LocalDate orderDate, Customer customer, OrderLine... lines) {
@@ -63,6 +65,9 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
         return this.lines;
     }
 
+    /**
+     * 自身の集約が永続化される時にフックして実行される
+     */
     @PrePersist
     private void init(){
         this.id = OrderId.create();
