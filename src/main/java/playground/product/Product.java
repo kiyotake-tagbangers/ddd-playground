@@ -1,7 +1,10 @@
 package playground.product;
 
+import org.hibernate.annotations.Type;
 import org.jmolecules.ddd.types.AggregateRoot;
+import org.jmolecules.ddd.types.Association;
 import org.jmolecules.ddd.types.Identifier;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -68,6 +71,20 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
 
         public static ProductId create(){
             return new ProductId(UUID.randomUUID());
+        }
+    }
+
+    public static class ProductAssociation implements Association<Product, Product.ProductId> {
+
+        private ProductId id;
+
+        public ProductAssociation(Product product) {
+            this.id = product.getId();
+        }
+
+        @Override
+        public ProductId getId() {
+            return this.id;
         }
     }
 }

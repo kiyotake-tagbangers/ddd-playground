@@ -1,7 +1,9 @@
 package playground.order;
 
+import org.hibernate.annotations.Type;
 import org.javamoney.moneta.Money;
 import org.jmolecules.ddd.types.Identifier;
+import playground.product.Product;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,19 +18,24 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
     @EmbeddedId
     private OrderLineId id;
 
+//    @Type(type="uuid-char")
+    private final Product.ProductAssociation product;
+
     private final String name;
 
     private final Money price;
 
     private final int quantity;
 
-    public OrderLine(String name, Money price, int quantity) {
+    public OrderLine(Product.ProductAssociation product,String name, Money price, int quantity) {
+        this.product =  product;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
 
     protected OrderLine(){
+        this.product = null;
         this.name = null;
         this.price = null;
         this.quantity = 0;
