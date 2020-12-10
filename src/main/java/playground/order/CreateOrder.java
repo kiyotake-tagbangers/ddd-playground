@@ -15,8 +15,8 @@ import java.util.List;
 @Setter
 public class CreateOrder {
 
+    // 注文された時に付与されるほうがいい
     private String orderNo;
-
     private LocalDate orderDate;
 
     private List<OrderLine> lines;

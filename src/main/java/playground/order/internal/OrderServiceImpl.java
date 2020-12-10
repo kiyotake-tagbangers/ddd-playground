@@ -34,9 +34,13 @@ public class OrderServiceImpl implements OrderService {
         log.info("在庫チェック");
         for (OrderLine line: command.getLines()) {
             var product = products.findById(line.getProduct().getId());
+
+            // product.hasStock() を呼ぶだけでいい
             if (product.isPresent()) {
                 // 商品が存在したら在庫数確認
+                // + 賞味期限もいれる
                 if (product.get().getStock() < line.getQuantity()) {
+                    // OutOfStockException にする
                     throw new RuntimeException("product out of stock");
                 }
             } else {

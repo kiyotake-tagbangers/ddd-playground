@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jmolecules.architecture.onion.simplified.ApplicationRing;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionalEventListener;
 import playground.order.OrderCreated;
 import playground.order.OrderLine;
 import playground.product.ProductService;
@@ -24,6 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
     private final Products products;
 
+    // @TransactionalEventListener -> commit 後に実施される
     @EventListener
     @Override
     public void updateStock(OrderCreated event) {

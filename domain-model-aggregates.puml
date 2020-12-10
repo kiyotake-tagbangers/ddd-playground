@@ -11,6 +11,7 @@ package Product <<Cloud>> {
         productNo: String
         name: String
         price: MonetaryAmount
+        hasStock()
     }
 }
 package Order <<Cloud>> {
