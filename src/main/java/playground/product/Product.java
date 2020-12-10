@@ -60,6 +60,10 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
         this.stock = stock;
     }
 
+    public boolean hasStock(int qty) {
+        return this.stock < qty;
+    }
+
     @Embeddable
     public static class ProductId implements Identifier, Serializable {
 
