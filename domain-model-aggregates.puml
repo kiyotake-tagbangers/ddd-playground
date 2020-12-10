@@ -1,11 +1,5 @@
 @startuml
 
-package Customer <<Cloud>> {
-    class Customer << (A,#f6d53d) AggregateRoot >> {
-        customerNo: String
-        name: String
-    }
-}
 package Product <<Cloud>> {
     class Product << (A,#f6d53d) AggregateRoot >> {
         productNo: String
@@ -16,7 +10,7 @@ package Product <<Cloud>> {
 }
 package Order <<Cloud>> {
     class Order << (A,#f6d53d) AggregateRoot >> {
-        customer: Customer.CustomerAssociation
+        customer: String
         orderNo: String
         orderDate: LocalDate
         lines: List<OrderLine>
@@ -27,7 +21,6 @@ package Order <<Cloud>> {
         price: MonetaryAmount
         quantity: int
     }
-    Order --> Customer
     Order *-- OrderLine
     OrderLine --> Product
 }
