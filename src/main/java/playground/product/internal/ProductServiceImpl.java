@@ -33,8 +33,9 @@ public class ProductServiceImpl implements ProductService {
         for (OrderLine line: order.getLines()) {
             // 更新対象の商品を取得
             var product = products.findById(line.getProduct().getId()).orElseThrow();
-            // 在庫減らす
-            product.setStock(Math.subtractExact(product.getStock(), line.getQuantity()));
+            // product 自身の持つ「在庫減らすメソッド」を呼び出す
+            product.reduceStock(line.getQuantity());
+            products.save(product);
         }
     }
 }

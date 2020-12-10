@@ -64,6 +64,10 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
         return this.stock > qty;
     }
 
+    public int reduceStock(int qty){
+        return Math.subtractExact(this.stock, qty);
+    }
+
     @Embeddable
     public static class ProductId implements Identifier, Serializable {
 
