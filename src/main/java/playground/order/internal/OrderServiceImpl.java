@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jmolecules.architecture.onion.simplified.ApplicationRing;
 import org.springframework.stereotype.Service;
-import playground.customer.Customers;
 import playground.order.*;
 import playground.product.Products;
 import playground.order.OutOfStockException;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 
 /**
  * @author KOGA, Yu
@@ -47,9 +47,9 @@ public class OrderServiceImpl implements OrderService {
 
         log.info("注文登録");
         var order = new Order(
-                command.getCustomer(),
+                command.getCustomerName(),
                 orderNo,
-                command.getOrderDate(),
+                LocalDate.now(),
                 command.getLines()
         );
         return this.orders.save(order);

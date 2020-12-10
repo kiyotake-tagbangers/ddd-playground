@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Identifier;
 import org.springframework.data.domain.AbstractAggregateRoot;
-import playground.customer.Customer;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,30 +32,30 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private final Customer customer;
 
-    private final Customer.CustomerAssociation customer;
+    private final String customerName;
 
     // デフォルトだと LAZY が適用、同じ集約なのでライフサイクルを同じように管理できるようにする
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderLine> lines;
 
-    public Order(Customer.CustomerAssociation customer, OrderNumber orderNo, LocalDate orderDate, OrderLine... lines) {
+    public Order(String customerName, OrderNumber orderNo, LocalDate orderDate, OrderLine... lines) {
         this.orderNo = orderNo;
         this.orderDate = orderDate;
-        this.customer = customer;
+        this.customerName = customerName;
         this.lines = Arrays.asList(lines);
     }
 
-    public Order(Customer.CustomerAssociation customer, OrderNumber orderNo, LocalDate orderDate, List<OrderLine> lines) {
+    public Order(String customerName, OrderNumber orderNo, LocalDate orderDate, List<OrderLine> lines) {
         this.orderNo = orderNo;
         this.orderDate = orderDate;
-        this.customer = customer;
+        this.customerName = customerName;
         this.lines = lines;
     }
 
     protected Order(){
         this.orderNo = null;
         this.orderDate = null;
-        this.customer = null;
+        this.customerName = null;
     }
 
     public OrderId getId() {
@@ -71,8 +70,8 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
         return this.orderDate;
     }
 
-    public Customer.CustomerAssociation getCustomer() {
-        return this.customer;
+    public String getCustomerName() {
+        return this.customerName;
     }
 
     public List<OrderLine> getLines() {
