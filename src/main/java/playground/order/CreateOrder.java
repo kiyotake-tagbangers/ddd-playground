@@ -22,6 +22,6 @@ public class CreateOrder {
     private List<OrderLine> lines;
 
     // 注文する人
-    private Customer.CustomerId customer;
+    private Customer.CustomerAssociation customer;
 
 }

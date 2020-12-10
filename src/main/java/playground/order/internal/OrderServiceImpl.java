@@ -48,9 +48,8 @@ public class OrderServiceImpl implements OrderService {
         var orderNo = this.orderNumberGenerator.generate();
 
         log.info("注文登録");
-        Customer customer = this.customers.findById(command.getCustomer()).orElseThrow();
         var order = new Order(
-                new Customer.CustomerAssociation(customer),
+                command.getCustomer(),
                 orderNo,
                 command.getOrderDate(),
                 command.getLines()
