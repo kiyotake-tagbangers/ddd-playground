@@ -55,6 +55,10 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
         return this.stock;
     }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     @Embeddable
     public static class ProductId implements Identifier, Serializable {
 
