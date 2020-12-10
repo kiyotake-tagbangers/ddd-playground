@@ -29,8 +29,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(CreateOrder command) {
-        log.info("与信チェック");
 
+        log.info("与信チェック");
+        String creditCardNumber = command.getCreditCardNumber();
+        // 外部システムとの連携
 
         log.info("在庫チェック");
         for (OrderLine line: command.getLines()) {
