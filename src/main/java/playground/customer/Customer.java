@@ -1,5 +1,6 @@
 package playground.customer;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Association;
 import org.jmolecules.ddd.types.Identifier;
@@ -44,6 +45,7 @@ public class Customer implements AggregateRoot<Customer, Customer.CustomerId> {
     @Embeddable
     public static class CustomerId implements Identifier, Serializable {
 
+        @JsonDeserialize
         private final UUID customerId;
 
         public CustomerId(UUID id) {

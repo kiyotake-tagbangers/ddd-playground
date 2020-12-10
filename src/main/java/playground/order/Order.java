@@ -1,5 +1,6 @@
 package playground.order;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Identifier;
 import org.springframework.data.domain.AbstractAggregateRoot;
@@ -90,6 +91,7 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
     @Embeddable
     public static class OrderId implements Identifier, Serializable {
 
+        @JsonDeserialize
         private final UUID orderId;
 
         public OrderId(UUID id) {

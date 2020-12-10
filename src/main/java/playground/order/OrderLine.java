@@ -1,5 +1,6 @@
 package playground.order;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.javamoney.moneta.Money;
 import org.jmolecules.ddd.types.Identifier;
 import playground.product.Product;
@@ -73,6 +74,8 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
 
     @Embeddable
     public static class OrderLineId implements Identifier, Serializable {
+
+        @JsonDeserialize
         private final UUID orderLineId;
 
         public OrderLineId(UUID id) {

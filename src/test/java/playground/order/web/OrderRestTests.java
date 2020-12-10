@@ -40,19 +40,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class OrderRestTests {
 
     final MockMvc mvc;
-
-    final Orders orders;
-
-    @MockBean
-    private OrderService orderService;
-
-    @BeforeEach
-    void setup() {
-        // TODO: Don't MOCK!!
-        var order = this.orders.findById(new Order.OrderId(UUID.fromString("bbb6f2f3-104b-489c-8048-ac08318a4898")))
-                .orElseThrow();
-        BDDMockito.given(orderService.createOrder(any())).willReturn(order);
-    }
+//
+//    final Orders orders;
+//
+//    private OrderService orderService;
+//
+//    @BeforeEach
+//    void setup() {
+//        // TODO: Don't MOCK!!
+//        var order = this.orders.findById(new Order.OrderId(UUID.fromString("bbb6f2f3-104b-489c-8048-ac08318a4898")))
+//                .orElseThrow();
+//        BDDMockito.given(orderService.createOrder(any())).willReturn(order);
+//    }
 
     @Test
     void list() throws Exception {

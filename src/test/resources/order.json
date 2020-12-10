@@ -9,7 +9,7 @@
   "lines": [{
     "product" : {
       "id" : {
-        "productId": "c1dbdb67-a51d-4923-8728-a6066fd83c7c"
+        "productId": "2b305c7b-5809-4103-ba56-e7aa313aa88b"
       }
     },
     "name": "チョコモナカジャンボ",
@@ -65,7 +65,7 @@
     {
       "product" : {
         "id" : {
-          "productId": "c1dbdb67-a51d-4923-8728-a6066fd83c7a"
+          "productId": "586b78a4-d999-48b7-938f-38691346b759"
         }
       },
       "name": "バニラモナカジャンボ",
@@ -121,7 +121,7 @@
     {
       "product" : {
         "id" : {
-          "productId": "c1dbdb67-a51d-4923-8728-a6066fd03c7c"
+          "productId": "33d9e8bd-b6d6-4d45-8445-509e872d86db"
         }
       },
       "name": "小豆バー",

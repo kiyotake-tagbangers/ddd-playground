@@ -1,5 +1,6 @@
 package playground.product;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Association;
 import org.jmolecules.ddd.types.Identifier;
@@ -62,6 +63,7 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
     @Embeddable
     public static class ProductId implements Identifier, Serializable {
 
+        @JsonDeserialize
         private final UUID productId;
 
         public ProductId(UUID id) {
