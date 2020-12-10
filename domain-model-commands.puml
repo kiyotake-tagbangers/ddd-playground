@@ -5,10 +5,8 @@ package Order <<Cloud>> {
 }
 
 class CreateOrder << (C,#acd0f6) Command >> {
-	orderNo: String
-	orderDate: LocalDate
 	lines: List<OrderLine>
-	customer: CustomerId
+	customerName: String
+	creditCardNumber: String
 }
-
 @enduml
