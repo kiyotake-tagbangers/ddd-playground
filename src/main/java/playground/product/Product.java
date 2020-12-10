@@ -61,7 +61,7 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
     }
 
     public boolean hasStock(int qty) {
-        return this.stock < qty;
+        return this.stock > qty;
     }
 
     @Embeddable
