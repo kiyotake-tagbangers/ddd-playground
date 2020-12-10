@@ -1,14 +1,13 @@
-package playground.product.internal;
+package playground.inventory.internal;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jmolecules.architecture.onion.simplified.ApplicationRing;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.event.TransactionalEventListener;
 import playground.order.OrderCreated;
 import playground.order.OrderLine;
-import playground.product.ProductService;
+import playground.inventory.InventoryService;
 import playground.product.Products;
 
 import javax.transaction.Transactional;
@@ -21,7 +20,7 @@ import javax.transaction.Transactional;
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class ProductServiceImpl implements ProductService {
+public class InventoryServiceImpl implements InventoryService {
 
     private final Products products;
 

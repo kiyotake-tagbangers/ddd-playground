@@ -1,11 +1,11 @@
-package playground.product;
+package playground.inventory;
 
 import playground.order.OrderCreated;
 
 /**
  * @author KOGA, Yu
  */
-public interface ProductService {
+public interface InventoryService {
 
     void updateStock(OrderCreated event);
 }
