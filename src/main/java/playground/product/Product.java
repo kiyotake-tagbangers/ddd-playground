@@ -74,6 +74,10 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
             this.productId = null;
         }
 
+        public UUID getProductId() {
+            return productId;
+        }
+
         public static ProductId create(){
             return new ProductId(UUID.randomUUID());
         }
