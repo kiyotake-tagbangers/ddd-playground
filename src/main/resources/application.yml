@@ -1,5 +1,5 @@
 spring:
   jpa:
     properties:
-      hibernate.globally_quoted_identifiers: true
+      hibernate.globally_quoted_identifiers: true # 予約後である order を使えるようにする
       hibernate.metadata_builder_contributor: playground.core.internal.UUIDMetadataBuilderContributor

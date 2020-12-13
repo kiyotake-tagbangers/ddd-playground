@@ -27,9 +27,6 @@ class OrderTests {
 
     @Test
     void mapping() {
-//        var product1 = this.em.persistAndFlush(new Product("P-12345", "チョコモナカジャンボ"));
-//        var product2 = this.em.persistAndFlush(new Product("P-12346", "バニラモナカジャンボ"));
-//        var product3 = this.em.persistAndFlush(new Product("P-12347", "小豆バー"));
         var product1 = this.em.find(Product.class, new Product.ProductId(UUID.fromString("2b305c7b-5809-4103-ba56-e7aa313aa88b")));
         var product2 = this.em.find(Product.class, new Product.ProductId(UUID.fromString("586b78a4-d999-48b7-938f-38691346b759")));
         var order = this.em.persistAndFlush(new Order

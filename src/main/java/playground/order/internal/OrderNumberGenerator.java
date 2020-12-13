@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import playground.order.OrderNumber;
 import playground.order.Orders;
 
-@DomainRing
+@DomainRing // 自身の集約内の他のインスタンスの情報をみて処理する
 @Factory
 @Component
 @RequiredArgsConstructor
@@ -16,7 +16,7 @@ public class OrderNumberGenerator {
     private final Orders orders;
 
     public OrderNumber generate() {
-        // 最大の注文番号+1を返す
+        // TODO: 最大の注文番号+1を返す
         return OrderNumber.of("ABC-12345");
     }
 

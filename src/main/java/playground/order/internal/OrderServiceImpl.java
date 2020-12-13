@@ -37,8 +37,9 @@ public class OrderServiceImpl implements OrderService {
         log.info("在庫チェック");
         for (OrderLine line: command.getLines()) {
             var product = products.findById(line.getProduct().getId()).orElseThrow();
-            // product.hasStock() を呼ぶだけでいい
+
             // ドメインロジックをここで実装しない！
+            // domain model が持つメソッドを呼ぶだけでいい
             if (!product.hasStock(line.getQuantity())) {
                 throw new OutOfStockException("product out of stock");
             }

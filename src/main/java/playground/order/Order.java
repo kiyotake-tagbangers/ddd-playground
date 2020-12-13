@@ -28,10 +28,6 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
 
     private final LocalDate orderDate;
 
-    // デフォルトだと EAGER が適用され、集約をまたいで永続化してしまう
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private final Customer customer;
-
     private final String customerName;
 
     // デフォルトだと LAZY が適用、同じ集約なのでライフサイクルを同じように管理できるようにする

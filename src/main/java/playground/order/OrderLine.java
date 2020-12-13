@@ -19,7 +19,6 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
     @AttributeOverride(name = "orderLineId", column = @Column(name = "id"))
     private OrderLineId id;
 
-//    @Type(type="uuid-char")
     private final Product.ProductAssociation product;
 
     private final String name;

@@ -6,6 +6,7 @@ import org.hibernate.type.UUIDCharType;
 import java.util.UUID;
 
 /**
+ * UUID カラムに @Type(type = "uuid-char") をつけなくて良いように hibernate の設定をカスタムする
  * @author KIYOTA, Takeshi
  */
 public class UUIDMetadataBuilderContributor implements MetadataBuilderContributor {

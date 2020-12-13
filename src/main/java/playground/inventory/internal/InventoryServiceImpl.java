@@ -30,8 +30,11 @@ public class InventoryServiceImpl implements InventoryService {
     public void updateStock(OrderCreated event) {
         var order = event.getOrder();
         for (OrderLine line: order.getLines()) {
+
             // 更新対象の商品を取得
             var product = products.findById(line.getProduct().getId()).orElseThrow();
+
+            // ドメインロジックをここで実装しない！
             // product 自身の持つ「在庫減らすメソッド」を呼び出す
             product.reduceStock(line.getQuantity());
             products.save(product);
