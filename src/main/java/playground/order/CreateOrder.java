@@ -1,8 +1,5 @@
 package playground.order;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 
 /**
@@ -10,8 +7,6 @@ import java.util.List;
  * 注文する時に必要な情報
  * @author KIYOTA, Takeshi
  */
-@Getter
-@Setter
 public class CreateOrder {
 
     private List<OrderLine> lines;
@@ -19,4 +14,28 @@ public class CreateOrder {
     private String customerName;
 
     private String creditCardNumber;
+
+    public List<OrderLine> getLines() {
+        return lines;
+    }
+
+    public void setLines(List<OrderLine> lines) {
+        this.lines = lines;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
 }
