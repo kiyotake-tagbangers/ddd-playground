@@ -61,6 +61,11 @@
             <version>${jmolecules.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-spring</artifactId>
+            <version>${jmolecules.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.javamoney.moneta</groupId>
             <artifactId>moneta-core</artifactId>
             <version>${javamoney.version}</version>
@@ -173,11 +178,11 @@
                 </executions>
                 <configuration>
                     <transformations>
-<!--                        <transformation>-->
-<!--                            <plugin>org.jmolecules.spring.JDddSpringPlugin</plugin>-->
-<!--                        </transformation>-->
                         <transformation>
-                            <plugin>org.jmolecules.jpa.JDddJpaPlugin</plugin>
+                            <plugin>org.jmolecules.spring.JMoleculesSpringPlugin</plugin>
+                        </transformation>
+                        <transformation>
+                            <plugin>org.jmolecules.jpa.JMoleculesJpaPlugin</plugin>
                         </transformation>
                     </transformations>
                 </configuration>
