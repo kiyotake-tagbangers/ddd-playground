@@ -33,8 +33,8 @@ class OrderTests {
                 ("タグバンガーズ太郎",
                         OrderNumber.of("O-12345"),
                         LocalDate.of(2020, 11, 28),
-                        new OrderLine(new Product.ProductAssociation(product1),"チョコモナカジャンボ", Money.of(140,"JPY"),1),
-                        new OrderLine(new Product.ProductAssociation(product2),"バニラモナカジャンボ", Money.of(140,"JPY"),1)
+                        new OrderLine(product1,"チョコモナカジャンボ", Money.of(140,"JPY"),1),
+                        new OrderLine(product2,"バニラモナカジャンボ", Money.of(140,"JPY"),1)
                         ));
         assertThat(order).isInstanceOf(AggregateRoot.class);
         assertThat(order.getLines().get(0)).isInstanceOf(Entity.class);

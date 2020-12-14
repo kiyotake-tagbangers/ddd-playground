@@ -19,7 +19,8 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
     @AttributeOverride(name = "orderLineId", column = @Column(name = "id"))
     private OrderLineId id;
 
-    private final Product.ProductAssociation product;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Product product;
 
     private final String name;
 
@@ -27,7 +28,7 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
 
     private final int quantity;
 
-    public OrderLine(Product.ProductAssociation product,String name, Money price, int quantity) {
+    public OrderLine(Product product,String name, Money price, int quantity) {
         this.product =  product;
         this.name = name;
         this.price = price;
@@ -63,7 +64,7 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
         return this.quantity;
     }
 
-    public Product.ProductAssociation getProduct() {
+    public Product getProduct() {
         return product;
     }
 

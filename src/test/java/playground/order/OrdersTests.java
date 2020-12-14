@@ -3,7 +3,9 @@ package playground.order;
 import lombok.RequiredArgsConstructor;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.TestConstructor;
 
 import java.util.UUID;
@@ -21,11 +23,14 @@ class OrdersTests {
 
     final Orders orders;
 
+    private final TestEntityManager em;
+
     @Test
-    void findById() {
-        var order = this.orders.findById(new Order.OrderId(UUID.fromString("bbb6f2f3-104b-489c-8048-ac08318a4898")))
-                .orElseThrow();
-        assertThat(order.getId()).isEqualTo(new Order.OrderId(UUID.fromString("bbb6f2f3-104b-489c-8048-ac08318a4898")));
-        assertThat(order.getLines()).hasSize(3);
+    void aggregateViolation() {
+        // 注文集約を取得
+        var order = this.orders.findById(new Order.OrderId(UUID.fromString("bbb6f2f3-104b-489c-8048-ac08318a4898"))).orElseThrow();
+
+        assertThat(order.getLines()).extracting("product.name")
+                .contains("チョコモナカジャンボ","バニラモナカジャンボ","小豆バー");
     }
 }
