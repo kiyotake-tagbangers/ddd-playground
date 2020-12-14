@@ -14,7 +14,6 @@ import java.util.UUID;
  */
 public class Product implements AggregateRoot<Product, Product.ProductId> {
 
-    @EmbeddedId
     @AttributeOverride(name = "productId", column = @Column(name = "id"))
     private ProductId id;
 
@@ -67,7 +66,6 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
         return Math.subtractExact(this.stock, qty);
     }
 
-    @Embeddable
     public static class ProductId implements Identifier, Serializable {
 
         @JsonDeserialize
@@ -90,7 +88,6 @@ public class Product implements AggregateRoot<Product, Product.ProductId> {
         }
     }
 
-    @Embeddable
     public static class ProductAssociation implements Association<Product, ProductId> {
 
         private ProductId id;

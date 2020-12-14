@@ -17,7 +17,6 @@ import java.util.UUID;
  */
 public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot<Order, Order.OrderId> {
 
-    @EmbeddedId
     @AttributeOverride(name = "orderId", column = @Column(name = "id"))
     private OrderId id;
 
@@ -82,7 +81,6 @@ public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot
         registerEvent(new OrderCreated(this));
     }
 
-    @Embeddable
     public static class OrderId implements Identifier, Serializable {
 
         @JsonDeserialize
