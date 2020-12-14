@@ -8,5 +8,5 @@ import org.jmolecules.architecture.onion.simplified.ApplicationRing;
 @ApplicationRing // 集約ルートをまたいで他の集約ルートを見る(アプリケーションサービス)
 public interface OrderService {
 
-    Order createOrder(CreateOrder command);
+    Order processOrder(CreateOrder command);
 }

@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderNumberGenerator orderNumberGenerator;
 
     @Override
-    public Order createOrder(CreateOrder command) {
+    public Order processOrder(CreateOrder command) {
 
         log.info("与信チェック");
         String creditCardNumber = command.getCreditCardNumber();

@@ -38,7 +38,7 @@ public class OrderController {
             @RequestBody CreateOrder command,
             @RequestHeader(value = "Accept", required = false) String acceptHeader,
             PersistentEntityResourceAssembler assembler) throws NotFoundException {
-        var order = this.orderService.createOrder(command);
+        var order = this.orderService.processOrder(command);
 
         Optional<PersistentEntityResource> resource = Optional
                 .ofNullable(this.restConfiguration.returnBodyOnCreate(acceptHeader)
