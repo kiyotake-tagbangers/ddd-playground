@@ -12,7 +12,6 @@ import java.util.UUID;
 /**
  * @author KIYOTA, Takeshi
  */
-@Entity
 public class Product implements AggregateRoot<Product, Product.ProductId> {
 
     @EmbeddedId

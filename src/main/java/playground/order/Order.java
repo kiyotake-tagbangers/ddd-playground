@@ -15,7 +15,6 @@ import java.util.UUID;
 /**
  * @author KIYOTA, Takeshi
  */
-@Entity
 public class Order extends AbstractAggregateRoot<Order> implements AggregateRoot<Order, Order.OrderId> {
 
     @EmbeddedId
