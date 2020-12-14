@@ -3,6 +3,7 @@ package playground.order;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.javamoney.moneta.Money;
 import org.jmolecules.ddd.types.Identifier;
+import org.jmolecules.ddd.types.Entity;
 import playground.product.Product;
 
 import javax.persistence.*;
@@ -12,10 +13,8 @@ import java.util.UUID;
 /**
  * @author KIYOTA, Takeshi
  */
-@Entity
-public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLine.OrderLineId>{
+public class OrderLine implements Entity<Order, OrderLine.OrderLineId>{
 
-    @EmbeddedId
     @AttributeOverride(name = "orderLineId", column = @Column(name = "id"))
     private OrderLineId id;
 
@@ -71,7 +70,6 @@ public class OrderLine implements org.jmolecules.ddd.types.Entity<Order, OrderLi
         return name;
     }
 
-    @Embeddable
     public static class OrderLineId implements Identifier, Serializable {
 
         @JsonDeserialize
