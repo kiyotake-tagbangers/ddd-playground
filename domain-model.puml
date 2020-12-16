@@ -1,0 +1,50 @@
+@startuml
+package Order <<Cloud>> {
+    class OrderCreated
+    class Order
+    class OrderLine
+    class CreateOrder
+}
+Order *-- OrderLine
+OrderLine --> Product
+
+package Product <<Cloud>> {
+    class Product
+}
+
+package Inventory <<Cloud>> {
+}
+
+class Product << (A,#f6d53d) AggregateRoot >> {
+    productNo: String
+    name: String
+    price: MonetaryAmount
+    hasStock()
+    reduceStock()
+}
+
+class Order << (A,#f6d53d) AggregateRoot >> {
+    customer: String
+    orderNo: String
+    orderDate: LocalDate
+    lines: List<OrderLine>
+}
+
+class OrderLine << (E,#f6d53d) Entity >>  {
+    product: Product.ProductAssociation
+    name: String
+    price: MonetaryAmount
+    quantity: int
+}
+
+class OrderCreated << (E,#ffaa60) DomainEvent >> {
+    order: Order
+}
+
+class CreateOrder << (C,#acd0f6) Command >> {
+    lines: List<OrderLine>
+    customerName: String
+    creditCardNumber: String
+}
+
+@enduml
